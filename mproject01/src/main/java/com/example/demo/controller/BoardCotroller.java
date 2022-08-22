@@ -2,10 +2,14 @@ package com.example.demo.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,13 +24,15 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
 import springfox.documentation.annotations.ApiIgnore;
 //REST만 처리하는 @Controller의 부분 집합 
+//스프링 검증을 활성화(자바표준 검증보다 기능이 더 많다)
+@Validated
 @RestController
 public class BoardCotroller {
 	@Autowired
 	private BoardService service;
 	
 	
-	//@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping(value="board/new",produces=MediaType.TEXT_PLAIN_VALUE)
 	@Operation(summary="5.글작성",description = "제목과 내용을 입력해 글을 작성")
 	@ApiImplicitParams({
@@ -37,8 +43,8 @@ public class BoardCotroller {
 		@ApiResponse(code=200,response = String.class,message = "글을 읽을 주소"),
 		@ApiResponse(code=409,response = String.class,message = "오류 메세지")
 	})
-	public ResponseEntity<String> write(BoardDto.Write dto, @ApiIgnore Principal principal){
-		Board board = service.write(dto,"spring");
+	public ResponseEntity<String> write(@Valid BoardDto.Write dto, BindingResult bindingResult, @ApiIgnore Principal principal){
+		Board board = service.write(dto,principal.getName());
 		return ResponseEntity.ok("/board/read?bno="+board.getBno());
 	}
 }
