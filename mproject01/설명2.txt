@@ -1,5 +1,5 @@
 1. CDATA, PCDATA
-- xml 파서 : xml 문서를 읽어들여 해석하느 프로그램
+- xml 파서 : xml 문서를 읽어들여 해석하는 프로그램
 -PCDATA : xml 문서에서 xml 파서에 의해 처리될 부분
 			따로 지정하지 않으면 xml 문서 전체
 -CDATA : xml 파서가 처리할 필요가 없는 부분
