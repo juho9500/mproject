@@ -19,4 +19,6 @@ public class BoardService {
 		boardDao.save(board);
 		return board;
 	}
+	
+	
 }
