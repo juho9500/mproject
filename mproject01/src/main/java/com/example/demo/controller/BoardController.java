@@ -43,3 +43,11 @@ public class BoardController {
 		return ResponseEntity.ok("/board/read?bno="+board.getBno());
 	}
 }
+
+
+
+
+
+
+
+

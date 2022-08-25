@@ -15,7 +15,7 @@ import com.example.demo.exception.*;
 public class BoardService {
 	@Autowired
 	private BoardDao boardDao;
-	@Value("${zproject.pagesize}")
+	@Value("${mproject.pagesize}")
 	private Integer pagesize;
 
 	public Board write(BoardDto.Write dto, String loginId) {

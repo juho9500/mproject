@@ -16,7 +16,7 @@ public interface BoardDao {
 	public Integer count(String writer);
 	
 	// 페이징
-	public List<BoardDto.ForList> findAll(String writer, Integer start, Integer end);
+	public List<BoardDto.ForList> findAll(Map map);
 	//파라미터가 여러개일 경우 맵으로 파라미터값을 하나만 줘서 넘겨야하는데...
 	
 	// 업데이트

@@ -44,7 +44,7 @@ public class BoardDaoTest {
 	// Test 케이스 4. findAll : 글이 14개있다. 11~14까지 4개를 읽어오자
 	//@Test
 	public void findAllTest() {
-		assertEquals(4, boardDao.findAll(null, 11, 14).size());
+		assertEquals(4, boardDao.findAll(null).size());
 	}
 	
 	// Test 케이스 5. (내용,제목), 조회수, 좋아요, 싫어요에 대해 값을 주면 update -> 결과가 0이 아니다
